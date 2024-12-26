@@ -64,3 +64,18 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+How to Run a Laravel Project with Docker on WSL (Windows Subsystem for Linux)
+This guide will walk you through the steps to run a Laravel project using Docker on a WSL (Windows Subsystem for Linux) environment.
+
+## Prerequisites
+
+
+Windows 10/11 with WSL enabled: You must have WSL installed. Follow Microsoft's guide to install WSL if it's not already set up.
+Docker Desktop for Windows: Install Docker Desktop, which integrates with WSL. Download it from the official Docker website.
+A Laravel Project: Ensure you have a Laravel project in your working directory.
+Steps to Run Laravel with Docker on WSL
+Install Docker and Enable WSL Integration
+Make sure Docker Desktop is installed and running.
+Open Docker Desktop and go to Settings → Resources → WSL Integration.
+Enable integration for your WSL distributions (e.g., Ubuntu) to allow Docker to work in WSL.
