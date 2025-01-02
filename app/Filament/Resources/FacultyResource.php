@@ -14,6 +14,7 @@ use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Model;
 
 class FacultyResource extends Resource
 {
@@ -65,11 +66,6 @@ class FacultyResource extends Resource
             ->actions([
                 EditAction::make(),
                 DeleteAction::make(),
-            ])
-            ->bulkActions([
-                BulkActionGroup::make([
-                    DeleteBulkAction::make(),
-                ]),
             ]);
     }
 
@@ -85,5 +81,27 @@ class FacultyResource extends Resource
     public static function getGloballySearchableAttributes(): array
     {
         return ['name'];
+    }
+
+    public static function canEdit(Model $record): bool
+    {
+        return auth()->user()->canAccess('admin');
+    }
+    public static function canDelete(Model $record): bool
+    {
+        return auth()->user()->canAccess('admin');
+    }
+    public static function canView(Model $record): bool
+    {
+        return auth()->user()->canAccess('user');
+    }
+
+    public static function canCreate(): bool
+    {
+        return auth()->user()->canAccess('admin');
+    }
+    public static function canAccess(): bool
+    {
+        return auth()->user()->canAccess('user');
     }
 }

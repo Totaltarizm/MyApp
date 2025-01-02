@@ -37,4 +37,16 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function canAccess(string $minRole): bool{
+        $keys = array_keys(config('roles.roles'));
+
+        $minRoleId = array_search($minRole, $keys);
+        $userRoleId = array_search($this->role, $keys);
+
+        if($minRoleId >= $userRoleId){
+            return true;
+        }
+        return false;
+    }
 }

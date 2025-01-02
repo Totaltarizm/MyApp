@@ -91,11 +91,6 @@ class TeacherResource extends Resource
             ->actions([
                 EditAction::make(),
                 DeleteAction::make(),
-            ])
-            ->bulkActions([
-                BulkActionGroup::make([
-                    DeleteBulkAction::make(),
-                ]),
             ]);
     }
 
@@ -127,5 +122,28 @@ class TeacherResource extends Resource
         }
 
         return $details;
+    }
+
+
+    public static function canEdit(Model $record): bool
+    {
+        return auth()->user()->canAccess('admin');
+    }
+    public static function canDelete(Model $record): bool
+    {
+        return auth()->user()->canAccess('admin');
+    }
+    public static function canView(Model $record): bool
+    {
+        return auth()->user()->canAccess('teacher_admin');
+    }
+
+    public static function canCreate(): bool
+    {
+        return auth()->user()->canAccess('admin');
+    }
+    public static function canAccess(): bool
+    {
+        return auth()->user()->canAccess('teacher_admin');
     }
 }

@@ -20,9 +20,28 @@ class DatabaseSeeder extends Seeder
             TeacherSeeder::class,
         ]);
         User::factory()->create([
-            'name' => 'Fursov Danil',
-            'email' => 'danil@fursovdanil.com',
-            'password' => Hash::make('fursovroot'),
+            'name' => 'root',
+            'email' => 'root@fursovdanil.com',
+            'password' => Hash::make('root'),
+        ]);
+
+        User::factory()->create([
+            'name' => 'admin',
+            'email' => 'admin@fursovdanil.com',
+            'password' => Hash::make('root'),
+            'role' => 'admin',
+        ]);
+        User::factory()->create([
+            'name' => 'user',
+            'email' => 'user@fursovdanil.com',
+            'password' => Hash::make('root'),
+            'role' => 'user',
+        ]);
+        User::factory()->create([
+            'name' => 'teacher Admin',
+            'email' => 'tadmin@fursovdanil.com',
+            'password' => Hash::make('root'),
+            'role' => 'teacher_admin',
         ]);
     }
 }

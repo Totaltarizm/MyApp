@@ -78,11 +78,6 @@ class DepartmentResource extends Resource
             ->actions([
                 EditAction::make(),
                 DeleteAction::make(),
-            ])
-            ->bulkActions([
-                BulkActionGroup::make([
-                    DeleteBulkAction::make(),
-                ]),
             ]);
     }
 
@@ -114,5 +109,28 @@ class DepartmentResource extends Resource
         }
 
         return $details;
+    }
+
+    public static function canCreate(): bool
+    {
+        return auth()->user()->canAccess('admin');
+    }
+
+    public static function canEdit(Model $record): bool
+    {
+        return auth()->user()->canAccess('admin');
+    }
+    public static function canDelete(Model $record): bool
+    {
+        return auth()->user()->canAccess('admin');
+    }
+    public static function canView(Model $record): bool
+    {
+        return auth()->user()->canAccess('user');
+    }
+
+    public static function canAccess(): bool
+    {
+        return auth()->user()->canAccess('user');
     }
 }
