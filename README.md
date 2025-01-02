@@ -8,19 +8,27 @@
 ## **Вимоги**
 
 - **Docker**: Встановіть [Docker](https://www.docker.com/get-started) і [Docker Compose](https://docs.docker.com/compose/).
+- **WSL 2**: Встановіть WSL 2 з дистрибутивом Ubuntu. Інструкцію можна знайти [тут](https://learn.microsoft.com/uk-ua/windows/wsl/install).
 - **Laravel**: Проєкт уже налаштований для роботи через Docker.
 
 ---
 
 ## **Встановлення**
 
-1. **Клонуйте репозиторій:**
+1. **Увімкніть WSL і перейдіть до вашого проєкту:**
+
+   Відкрийте WSL (Ubuntu) та перейдіть до директорії, де буде ваш проєкт:
+
+   ```bash
+   cd /mnt/c/шлях_до_проєкту
+
+2. **Клонуйте репозиторій:**
    ```
    git clone https://github.com/ваш_юзернейм/назва_проєкту.git
    cd назва_проєкту
    ```
 
-2. **Створіть файл `.env`:**
+3. **Створіть файл `.env`:**
    Скопіюйте `.env.example` у `.env`:
    ```
    cp .env.example .env
@@ -35,23 +43,23 @@
    DB_PASSWORD=password
    ```
 
-3. **Запустіть контейнери Docker:**
+4. **Запустіть контейнери Docker:**
    ```
    docker-compose up -d
    ```
 
-4. **Встановіть залежності Laravel:**
+5. **Встановіть залежності Laravel:**
    Виконайте команду всередині контейнера:
    ```
    docker-compose exec app composer install
    ```
 
-5. **Згенеруйте ключ додатка:**
+6. **Згенеруйте ключ додатка:**
    ```
    docker-compose exec app php artisan key:generate
    ```
 
-6. **Запустіть міграції бази даних:**
+7. **Запустіть міграції бази даних:**
    ```
    docker-compose exec app php artisan migrate
    ```
