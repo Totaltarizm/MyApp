@@ -92,5 +92,5 @@ http://http://localhost:8080/admin
 
 ---
 
-## **Powered bu Fursov Danil**
+## **Powered by Fursov Danil**
 
